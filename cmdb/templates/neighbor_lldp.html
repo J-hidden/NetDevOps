@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../static/css/layui.css"  media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+{% endblock head %}
+
+{% block content %}
+<form action="" method="post">
+{% csrf_token %}
+  <div class="layui-form-item">
+    <label class="layui-form-label">IP Address</label>
+    <div class="layui-input-inline">
+      <input type="text" name="ip" lay-verify="pass" placeholder="请输入IP地址" autocomplete="off" class="layui-input">
+    </div>
+   <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">提交</button>
+  </div>
+</form>
+
+<div style="width: 1500px; position: center;">
+ <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px";>
+  <legend>交换机信息</legend>
+ </fieldset>
+<table class="layui-table">
+    <thead>
+    <tr>
+        <th>本地IP</th>
+        <th>本地接口</th>
+        <th>对端IP</th>
+        <th>对端接口</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for i in neighbor_lldp_info %}
+         <tr>
+             <td>{{ i.device }}</td>
+             <td>{{ i.Local_intf }}</td>
+             <td>{{ i.Neighbor_dev }}</td>
+             <td>{{ i.Neighbor_intf }}</td>
+         </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<script src="../static/layui.js" charset="utf-8"></script>
+{% endblock content %}
