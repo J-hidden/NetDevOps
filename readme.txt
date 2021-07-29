@@ -17,3 +17,14 @@
 
 四、项目中收集信息的脚本都是通过schedule_coll.py来收集，请同时启动该脚本，该脚本会一直启动实时收集设备信息
 
+
+使用方面：
+1、通过命令行输入  python3 manage.py runserver 0:8000  启动项目
+2、然后在启动 schedule_coll.py 文件
+    cd collect_info
+    python3 schedule_coll.py
+3、打开  http://127.0.0.1:8000/admin  输入账密admin/admin
+4、在  Device 中添加设备，目前只支持华为设备，亦可DIY。
+5、等待一段时间后再 http://127.0.0.1:8000/ 中就可以看到收集到的信息了
+
+注：如果需要收集AP信息则输入AC信息时一定要选择设备为AC
