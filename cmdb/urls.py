@@ -8,7 +8,7 @@ urlpatterns = [
     path('register/', views.Register, name='register'),
     path('login/', views.Login),
     path('index/', views.index),
-    url(r'^$', home, name='home'),
+    path('', home, name='home'),
     path('config/', views.Config, name='config'),
     path('config_save/', views.Config_save, name='config_save'),
     path('Log_message/', views.Log_message, name='log_message'),
