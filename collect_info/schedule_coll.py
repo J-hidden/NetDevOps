@@ -10,13 +10,13 @@ import schedule
 
 def tasklist():
     schedule.clear()
-    schedule.every(10).second.do(collect_aps)
-    schedule.every(10).second.do(collect_cpu_info)
-    schedule.every(10).second.do(collect_intfs)
-    schedule.every(10).second.do(neighbor_lldp_coll)
-    schedule.every(10).second.do(transceiver_coll)
-    schedule.every(10).second.do(transceiver__verbose_coll)
-    schedule.every(10).second.do(collect_versions)
+    schedule.every(10).seconds.do(collect_aps)
+    schedule.every(10).seconds.do(collect_cpu_info)
+    schedule.every(10).seconds.do(collect_intfs)
+    schedule.every(10).seconds.do(neighbor_lldp_coll)
+    schedule.every(10).seconds.do(transceiver_coll)
+    schedule.every(10).seconds.do(transceiver__verbose_coll)
+    schedule.every(10).seconds.do(collect_versions)
     while True:
         schedule.run_pending()
         time.sleep(5)
