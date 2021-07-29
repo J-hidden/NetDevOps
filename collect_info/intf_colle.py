@@ -32,8 +32,13 @@ def collect_intfs():
         for intf in intfs:
             try:
                 # Interface(name=intf['interface'], phy=intf['phy'], protocol=intf['protocol'], desc=intf['description'], device=dev).save()
-                obj, created = Interface.objects.update_or_create(device=dev,
-                                           defaults=dict(name=intf['interface'], phy=intf['phy'], protocol=intf['protocol'], desc=intf['description'], device=dev)
+                obj, created = Interface.objects.update_or_create(
+                                           device=dev,name=intf['interface'],
+                                           defaults=dict(name=intf['interface'],
+                                                         phy=intf['phy'],
+                                                         protocol=intf['protocol'],
+                                                         desc=intf['description'],
+                                                         device=dev)
                                            )
                 print(obj, created)
                 print('端口:{}保存成功'.format(intf['interface']))

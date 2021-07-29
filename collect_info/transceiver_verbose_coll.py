@@ -31,8 +31,15 @@ def transceiver__verbose_coll():
         print(transceivers)
         for transceiver in transceivers:
             try:
-                obj, created = Tansceiver.objects.update_or_create(device=dev, interface=transceiver['INTERFACE'],
-                                                                defaults=dict(rx=transceiver['RX'], rx_max=transceiver['RX_H'], rx_min=transceiver['RX_L'], tx=transceiver['TX'], tx_max=transceiver['TX_H'], tx_min=transceiver['TX_L'], device=dev))
+                obj, created = Tansceiver.objects.update_or_create(device=dev, interface=transceiver['interface'],
+                                                                defaults=dict(interface=transceiver['interface'],
+                                                                              rx=transceiver['rx'],
+                                                                              rx_max=transceiver['rx_h'],
+                                                                              rx_min=transceiver['rx_l'],
+                                                                              tx=transceiver['tx'],
+                                                                              tx_max=transceiver['tx_h'],
+                                                                              tx_min=transceiver['tx_l'],
+                                                                              device=dev))
                 print(obj, created)
                 print('设备:{}保存成功'.format(dev))
             except Exception as e:
@@ -55,8 +62,14 @@ def transceiver_coll():
         for trans in transceivers:
             # print(trans)
             try:
-                obj, created = Tansceiver.objects.update_or_create(device=dev, interface=trans['INTERFACE'],
-                                                                defaults=dict(transceiver=trans['Transciver_Type'], sn=trans['Serial_No'], connector=trans['Connector_Type'], vendor=trans['Vendor'], wavelength=trans['WaveLength_nm'], device=dev))
+                obj, created = Tansceiver.objects.update_or_create(device=dev, interface=trans['interface'],
+                                                                defaults=dict(interface=trans['interface'],
+                                                                              transceiver=trans['transciver_type'],
+                                                                              sn=trans['serial_no'],
+                                                                              connector=trans['connector_type'],
+                                                                              vendor=trans['vendor'],
+                                                                              wavelength=trans['wavelength_nm'],
+                                                                              device=dev))
                 print(obj, created)
                 print('设备:{}保存成功'.format(dev))
             except Exception as e:

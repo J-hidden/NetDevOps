@@ -138,13 +138,14 @@ def ssh_device_2_get_transceiver_verbose(device_type, ip, username, password, po
 
     with ConnectHandler(**dev_info) as conn:
         transceiver = conn.send_command(cmd, use_textfsm=True)
-        f = open('./templates/huawei_display_transceiver_verbose.textfsm')
-        # 调用函数TextFSM赋值变量
-        template = TextFSM(f)
-        # 调用template下的函数ParseText解析output内容
-        # print(template.ParseTextToDicts(transceiver))
-        return template.ParseTextToDicts(transceiver)
-
+        # f = open('./templates/huawei_display_transceiver_verbose.textfsm')
+        # # 调用函数TextFSM赋值变量
+        # template = TextFSM(f)
+        # # 调用template下的函数ParseText解析output内容
+        # # print(template.ParseTextToDicts(transceiver))
+        # return template.ParseTextToDicts(transceiver)
+        print(transceiver)
+        return transceiver
 
 transceiver_mapping = {
     'huawei': 'display transceiver'
@@ -165,12 +166,15 @@ def ssh_device_2_get_transceiver(device_type, ip, username, password, port):
 
     with ConnectHandler(**dev_info) as conn:
         transceiver = conn.send_command(cmd, use_textfsm=True)
-        f = open('./templates/huawei_display_transceiver.textfsm')
-        # 调用函数TextFSM赋值变量
-        template = TextFSM(f)
-        # 调用template下的函数ParseText解析output内容
-        # print(template.ParseTextToDicts(transceiver))
-        return template.ParseTextToDicts(transceiver)
+        # f = open('templates/huawei_display_transceiver.textfsm')
+        # # 调用函数TextFSM赋值变量
+        # template = TextFSM(f)
+        # # 调用template下的函数ParseText解析output内容
+        # # print(template.ParseTextToDicts(transceiver))
+        # return template.ParseTextToDicts(transceiver)
+        print(transceiver)
+        return transceiver
+
 
 if __name__ == '__main__':
     dev_info = {
@@ -185,6 +189,6 @@ if __name__ == '__main__':
     # ssh_device_2_get_version(**dev_info)
     # ssh_device_2_get_neighbor_lldp(**dev_info)
     # ssh_device_2_get_cpu_usage(**dev_info)
-
-    # ssh_device_2_get_transceiver_verbose(**dev_info)
-    # ssh_device_2_get_transceiver(**dev_info)
+    #
+    ssh_device_2_get_transceiver_verbose(**dev_info)
+    ssh_device_2_get_transceiver(**dev_info)
